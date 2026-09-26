@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MinecraftServerMixin {
     @Inject(method = "stopServer", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/players/PlayerList;saveAll()V", shift = At.Shift.AFTER))
     private void pas$ensureCompleted(CallbackInfo ci) {
-        PlayerAsyncSave.ensureCompleted();
+        PlayerAsyncSave.ensureCompleted("Stopping");
     }
 }
