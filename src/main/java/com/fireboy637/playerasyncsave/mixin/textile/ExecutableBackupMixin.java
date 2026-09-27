@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ExecutableBackupMixin {
     @Inject(method = "lambda$call$0", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/MinecraftServer;saveEverything(ZZZ)Z", shift = At.Shift.AFTER))
     private void pas$ensureCompleted(CallbackInfo ci) {
-        PlayerAsyncSave.ensureCompleted("Backup");
+        PlayerAsyncSave.ensureTaskCompleted("Backup");
     }
 }

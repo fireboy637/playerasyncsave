@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class PlayerListMixin {
     @Inject(method = "saveAll", at = @At("HEAD"))
     private void pas$ensureCompleted(CallbackInfo ci) {
-        PlayerAsyncSave.ensureCompleted("Next save");
+        PlayerAsyncSave.ensureTaskCompleted("Before next save");
     }
 }
