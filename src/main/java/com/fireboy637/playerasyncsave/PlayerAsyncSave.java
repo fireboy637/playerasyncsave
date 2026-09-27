@@ -34,7 +34,7 @@ public class PlayerAsyncSave implements ModInitializer {
     @ApiStatus.Internal // 敢从模组外/线程外调用这个的肯定是十八码了
     public static void submitTask(Player player, Path playerDirPath, Path tmpFile, CompoundTag dataToStore) {
         if (server != null && Thread.currentThread() != server.getRunningThread()) {
-            var e = new RuntimeException();
+            var e = new RuntimeException("PlayerAsyncSave: outside Server Thread");
             LOGGER.error("PlayerAsyncSave: task submit outside Server Thread, current thread is {}", Thread.currentThread().getName(), e);
             throw e;
         }
